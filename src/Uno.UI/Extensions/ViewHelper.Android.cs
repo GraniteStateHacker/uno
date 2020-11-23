@@ -107,6 +107,12 @@ namespace Uno.UI
 		{
 			using (Android.Util.DisplayMetrics displayMetrics = Android.App.Application.Context.Resources.DisplayMetrics)
 			{
+				if (FeatureConfiguration.Font.IgnoreTextScaleFactor)
+				{
+					// Keep disabling text scaling
+					displayMetrics.ScaledDensity = displayMetrics.Density;
+				}
+
 				_cachedScaledDensity = displayMetrics.ScaledDensity;
 			}
 		}
